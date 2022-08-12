@@ -190,7 +190,7 @@ public class SLAMonitoringTest {
     @Test
     public void testUnloadIfBrokerCrashes() {
         int crashIndex = BROKER_COUNT / 2;
-        log.info("Trying to close the broker at index = {}", crashIndex);
+        log.info("Trying to close the broker at index = {} ", crashIndex);
 
         try {
             pulsarServices[crashIndex].close();
