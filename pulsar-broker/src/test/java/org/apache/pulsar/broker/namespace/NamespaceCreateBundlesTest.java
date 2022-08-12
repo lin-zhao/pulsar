@@ -53,6 +53,8 @@ public class NamespaceCreateBundlesTest extends BrokerTestBase {
     public void testCreateNamespaceWithDefaultBundles() throws Exception {
         String namespaceName = "prop/" + UUID.randomUUID().toString();
 
+
+
         admin.namespaces().createNamespace(namespaceName);
 
         Policies policies = admin.namespaces().getPolicies(namespaceName);
