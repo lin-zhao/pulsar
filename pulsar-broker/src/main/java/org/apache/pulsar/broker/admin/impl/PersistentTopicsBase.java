@@ -3070,16 +3070,6 @@ public class PersistentTopicsBase extends AdminResource {
         }
     }
 
-    /*
-    private SchemaRegistry.SchemaAndMetadata getSchemaSync(SchemaVersion schemaVersion) {
-        var registryService = pulsar().getSchemaRegistryService();
-        var future = registryService.getSchema(getSchemaId(), schemaVersion);
-        return future.join();
-
-//        return pulsar().getSchemaRegistryService().getSchema(getSchemaId(), schemaVersion).join();
-    }
-     */
-
     private CompletableFuture<SchemaRegistry.SchemaAndMetadata> getSchema(SchemaVersion schemaVersion) {
         return pulsar().getSchemaRegistryService().getSchema(getSchemaId(), schemaVersion);
     }
@@ -3217,12 +3207,6 @@ public class PersistentTopicsBase extends AdminResource {
                 return getSchema(new LongSchemaVersion(longFromBytes(metadata.getSchemaVersion())))
                         .thenCompose(schemaAndMetadata ->
                                 CompletableFuture.completedFuture(schemaAndMetadata.schema.toSchemaInfo()));
-                /*
-                SchemaInfo schemaInfo = getSchemaSync(
-                        new LongSchemaVersion(longFromBytes(metadata.getSchemaVersion()))).schema.toSchemaInfo();
-                return CompletableFuture.completedFuture(schemaInfo);
-
-                 */
             }
 
             @Override
@@ -3230,12 +3214,6 @@ public class PersistentTopicsBase extends AdminResource {
                 return getSchema(SchemaVersion.Latest)
                         .thenCompose(schemaAndMetadata ->
                                 CompletableFuture.completedFuture(schemaAndMetadata.schema.toSchemaInfo()));
-                /*
-                SchemaInfo schemaInfo = getSchemaSync(
-                        SchemaVersion.Latest).schema.toSchemaInfo();
-                return CompletableFuture.completedFuture(schemaInfo);
-
-                 */
             }
 
             @Override
