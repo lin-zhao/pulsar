@@ -115,6 +115,8 @@ import org.apache.pulsar.metadata.api.MetadataStoreException.NotFoundException;
 @Slf4j
 public abstract class NamespacesBase extends AdminResource {
 
+
+
     protected CompletableFuture<List<String>> internalGetTenantNamespaces(String tenant) {
         if (tenant == null) {
             return FutureUtil.failedFuture(new RestException(Status.BAD_REQUEST, "Tenant should not be null"));
